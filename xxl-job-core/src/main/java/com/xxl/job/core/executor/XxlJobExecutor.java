@@ -116,25 +116,28 @@ public class XxlJobExecutor  {
 
 
     // ---------------------- admin-client (rpc invoker) ----------------------
-    private static List<AdminBiz> adminBizList;
+    private static AdminClient adminClient;
     private void initAdminBizList(String adminAddresses, String accessToken) throws Exception {
-        if (adminAddresses!=null && adminAddresses.trim().length()>0) {
-            for (String address: adminAddresses.trim().split(",")) {
-                if (address!=null && address.trim().length()>0) {
-
-                    AdminBiz adminBiz = new AdminBizClient(address.trim(), accessToken);
-
-                    if (adminBizList == null) {
-                        adminBizList = new ArrayList<AdminBiz>();
-                    }
-                    adminBizList.add(adminBiz);
-                }
-            }
+       if (adminAddresses!=null && adminAddresses.trim().length()>0) {
+           if (adminClient == null){
+               this.adminClient= new SimpleAdminClient(adminAddresses, accessToken);
+           }else {
+               this.adminClient= new SimpleAdminClient(adminAddresses, accessToken,this.adminClient);
+           }
         }
+
     }
 
+    protected void setAdminClient(AdminClient adminClient){
+        this.adminClient=adminClient;
+    }
+
+
     public static List<AdminBiz> getAdminBizList(){
-        return adminBizList;
+        if (adminClient == null){
+            return null;
+        }
+        return adminClient.getAdminBizs();
     }
 
     // ---------------------- executor-server (rpc provider) ----------------------
