@@ -49,23 +49,49 @@ public class XxlJobAdminConfig implements InitializingBean, DisposableBean {
     // ---------------------- XxlJobScheduler ----------------------
 
     // conf
-    @Value("${xxl.job.i18n}")
+    //@Value("${xxl.job.i18n}")
     private String i18n;
 
-    @Value("${xxl.job.accessToken}")
+    //@Value("${xxl.job.accessToken}")
     private String accessToken;
 
-    @Value("${spring.mail.from}")
+    // @Value("${spring.mail.from}")
     private String emailFrom;
 
-    @Value("${xxl.job.triggerpool.fast.max}")
+    // @Value("${xxl.job.triggerpool.fast.max}")
     private int triggerPoolFastMax;
 
-    @Value("${xxl.job.triggerpool.slow.max}")
+    //  @Value("${xxl.job.triggerpool.slow.max}")
     private int triggerPoolSlowMax;
 
-    @Value("${xxl.job.logretentiondays}")
+    //  @Value("${xxl.job.logretentiondays}")
     private int logretentiondays;
+
+    public void setI18n(String i18n) {
+        this.i18n = i18n;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
+
+    public void setEmailFrom(String emailFrom) {
+        this.emailFrom = emailFrom;
+    }
+
+    public void setTriggerPoolFastMax(int triggerPoolFastMax) {
+        this.triggerPoolFastMax = triggerPoolFastMax;
+    }
+
+    public void setTriggerPoolSlowMax(int triggerPoolSlowMax) {
+        this.triggerPoolSlowMax = triggerPoolSlowMax;
+    }
+
+    public void setLogretentiondays(int logretentiondays) {
+        this.logretentiondays = logretentiondays;
+    }
+
+
 
     // dao, service
 
