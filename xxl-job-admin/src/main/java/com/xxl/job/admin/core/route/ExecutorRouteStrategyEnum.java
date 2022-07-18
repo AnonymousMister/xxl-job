@@ -3,6 +3,11 @@ package com.xxl.job.admin.core.route;
 import com.xxl.job.admin.core.route.strategy.*;
 import com.xxl.job.admin.core.util.I18nUtil;
 
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * Created by xuxueli on 17/3/10.
  */
@@ -43,6 +48,18 @@ public enum ExecutorRouteStrategyEnum {
             }
         }
         return defaultItem;
+    }
+
+
+    public static List<HashMap<String, Object>> getEnumList() {
+        List<HashMap<String, Object>> list = new ArrayList<>();
+        for (ExecutorRouteStrategyEnum testEnum : EnumSet.allOf(ExecutorRouteStrategyEnum.class)) {
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("label", testEnum.title);
+            map.put("value", testEnum.name());
+            list.add(map);
+        }
+        return list;
     }
 
 }

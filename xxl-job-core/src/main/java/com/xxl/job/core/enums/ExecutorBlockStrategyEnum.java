@@ -1,5 +1,10 @@
 package com.xxl.job.core.enums;
 
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * Created by xuxueli on 17/5/9.
  */
@@ -31,5 +36,16 @@ public enum ExecutorBlockStrategyEnum {
             }
         }
         return defaultItem;
+    }
+
+    public static List<HashMap<String, Object>> getEnumList() {
+        List<HashMap<String, Object>> list = new ArrayList<>();
+        for (ExecutorBlockStrategyEnum e : EnumSet.allOf(ExecutorBlockStrategyEnum.class)) {
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("value", e.name());
+            map.put("label", e.title);
+            list.add(map);
+        }
+        return list;
     }
 }
