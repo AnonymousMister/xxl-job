@@ -2,6 +2,11 @@ package com.xxl.job.admin.core.scheduler;
 
 import com.xxl.job.admin.core.util.I18nUtil;
 
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * @author xuxueli 2020-10-29 21:11:23
  */
@@ -36,4 +41,14 @@ public enum MisfireStrategyEnum {
         return defaultItem;
     }
 
+    public static List<HashMap<String, Object>> getEnumList() {
+        List<HashMap<String, Object>> list = new ArrayList<>();
+        for (MisfireStrategyEnum e : EnumSet.allOf(MisfireStrategyEnum.class)) {
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("value", e.name());
+            map.put("label", e.title);
+            list.add(map);
+        }
+        return list;
+    }
 }

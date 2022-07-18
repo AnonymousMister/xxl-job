@@ -1,5 +1,10 @@
 package com.xxl.job.core.glue;
 
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * Created by xuxueli on 17/4/26.
  */
@@ -50,4 +55,14 @@ public enum GlueTypeEnum {
         return null;
     }
 
+    public static List<HashMap<String, Object>> getEnumList() {
+        List<HashMap<String, Object>> list = new ArrayList<>();
+        for (GlueTypeEnum e : EnumSet.allOf(GlueTypeEnum.class)) {
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("value", e.name());
+            map.put("label", e.desc);
+            list.add(map);
+        }
+        return list;
+    }
 }
